@@ -1,0 +1,94 @@
+import React from 'react'
+
+const Style26 = () => {
+  return (
+    <>
+    <section class="app-two-feature ptb-120">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 col-md-10">
+                        <div class="section-heading text-center">
+                            <h2>Explore Premium Features</h2>
+                            <p>
+                                A bit of how's your father he nicked it charles daft plast lavator.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-xl-10">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
+                                    <div class="app-two-single-feature-icon box-one me-3 mb-4 mb-md-0">
+                                        <i class="fas fa-file-edit"></i>
+                                    </div>
+                                    <div class="app-two-single-feature-content">
+                                        <h3 class="h5">Easy to Customized</h3>
+                                        <p>
+                                            Authoritatively productize orthogonal networks rather than
+                                            state of the art interfaces.
+                                        </p>
+                                        <a href="service-single.html" class="link-with-icon text-decoration-none">View
+                                            Details <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
+                                    <div class="app-two-single-feature-icon box-two me-3 mb-4 mb-md-0">
+                                        <i class="fas fa-bell"></i>
+                                    </div>
+                                    <div class="app-two-single-feature-content">
+                                        <h3 class="h5">Mobile App</h3>
+                                        <p>
+                                            Enthusiastically envisioneer integrated catalysts for change
+                                            before fully researched vortals.
+                                        </p>
+                                        <a href="service-single.html" class="link-with-icon text-decoration-none">View
+                                            Details <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
+                                    <div class="app-two-single-feature-icon box-three me-3 mb-4 mb-md-0">
+                                        <i class="fas fa-pen-nib"></i>
+                                    </div>
+                                    <div class="app-two-single-feature-content">
+                                        <h3 class="h5">Expand your reach</h3>
+                                        <p>
+                                            Authoritatively syndicate focused ideas whereas revolutionary
+                                            outsourcing.
+                                        </p>
+                                        <a href="service-single.html" class="link-with-icon text-decoration-none">View
+                                            Details <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-12">
+                                <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
+                                    <div class="app-two-single-feature-icon box-four me-3 mb-4 mb-md-0">
+                                        <i class="fas fa-cloud-download-alt"></i>
+                                    </div>
+                                    <div class="app-two-single-feature-content">
+                                        <h3 class="h5">Free Download</h3>
+                                        <p>
+                                            Rapidiously reintermediate plug-and-play potentialities via
+                                            cross-unit e-markets.
+                                        </p>
+                                        <a href="service-single.html" class="link-with-icon text-decoration-none">View
+                                            Details <i class="fas fa-arrow-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        </>
+  )
+}
+
+export default Style26
