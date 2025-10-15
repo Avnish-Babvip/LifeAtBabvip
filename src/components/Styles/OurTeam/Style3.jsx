@@ -1,7 +1,15 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { getTeam } from "../../../features/actions/team";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-const Style3 = ({ data, teamData }) => {
+const Style3 = ({ data }) => {
+  const dispatch = useDispatch();
+  const { teamData } = useSelector((state) => state.team);
+
+  useEffect(() => {
+    dispatch(getTeam());
+  }, []);
   return (
     <>
       <section class="speaker-list bg-light-subtle pt-120 pb-80">

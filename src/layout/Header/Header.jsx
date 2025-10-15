@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { applicantLogout } from "../../features/actions/authentication";
+import { LuLogOut } from "react-icons/lu";
 
 const Header = () => {
   const assetRoute = `${
@@ -8,11 +10,13 @@ const Header = () => {
       ? import.meta.env.VITE_ASSETS
       : ""
   }`;
-
   const dispatch = useDispatch();
 
-  const { response, isUserLoggedIn } = useSelector(
+  const { isUserLoggedIn, applicantData } = useSelector(
     (state) => state.authentication
+  );
+  const { applicant } = useSelector(
+    (state) => state.authentication.applicantData
   );
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const { headMenuData } = useSelector((state) => state.headMenu);
@@ -302,7 +306,7 @@ const Header = () => {
             {!isUserLoggedIn && (
               <Link
                 class="btn btn-success"
-                to={"https://lifeatbabvip.com/applicant/login"}
+                to={"login/applicant"}
                 role="button"
                 aria-expanded="false"
               >
@@ -324,7 +328,7 @@ const Header = () => {
                     >
                       <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z" />
                     </svg>{" "}
-                    {response?.applicant?.name}
+                    {applicant?.name}
                     <svg
                       className="height-5 width-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -345,12 +349,20 @@ const Header = () => {
                       position: "absolute",
                     }}
                   >
-                    <a
-                      href="https://www.lifeatbabvip.com/applicant/dashboard"
-                      className="dropdown-item"
+                    <Link
+                      to="/applicant/dashboard"
+                      className="dropdown-item fw-500"
                     >
                       Go To Dashboard
-                    </a>
+                    </Link>
+                    <Link
+                      onClick={() => {
+                        dispatch(applicantLogout(applicantData?.login_token));
+                      }}
+                      className="dropdown-item fw-500 text-danger"
+                    >
+                      Log Out
+                    </Link>
                   </div>
                 )}
               </div>
@@ -475,9 +487,8 @@ const Header = () => {
             {" "}
             <Link
               class="btn btn-success"
-              to={"https://lifeatbabvip.com/applicant/login"}
-              role="button"
-              aria-expanded="false"
+              to={"login/applicant"}
+              onClick={closeOffcanvas}
             >
               Login
             </Link>
@@ -518,7 +529,7 @@ const Header = () => {
                   >
                     <path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z" />
                   </svg>
-                  {response?.applicant?.name}
+                  {applicant?.name}
                 </span>
               </div>
 
@@ -531,8 +542,8 @@ const Header = () => {
               >
                 <div className="dropdown-grid rounded-custom ">
                   <div className="dropdown-grid-item bg-white radius-left-side">
-                    <a
-                      href="https://www.lifeatbabvip.com/applicant/dashboard"
+                    <Link
+                      to="/applicant/dashboard"
                       onClick={closeOffcanvas}
                       className="dropdown-link d-flex align-items-center gap-2"
                     >
@@ -547,7 +558,27 @@ const Header = () => {
                         </div>
                         <p className="truncate-1">Go to Dashboard</p>
                       </div>
-                    </a>
+                    </Link>
+                    <Link
+                      onClick={() => {
+                        closeOffcanvas();
+                        dispatch(applicantLogout(applicantData?.login_token));
+                      }}
+                      className="dropdown-link d-flex align-items-center gap-2"
+                    >
+                      <LuLogOut
+                        className="text-danger"
+                        style={{ height: "30px", width: "43px" }}
+                      />
+                      <div className="dropdown-info">
+                        <div className="drop-title text-capitalize text-danger">
+                          Log Out
+                        </div>
+                        <p className="truncate-1 text-danger">
+                          Select this to logout
+                        </p>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>

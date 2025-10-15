@@ -38,7 +38,7 @@ const Style2 = ({ data }) => {
   return isLoading ? (
     <Loader />
   ) : (
-    <section class="masonary-blog-section pt-60 pb-120">
+    <section class="masonary-blog-section pt-100 pb-120">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6 col-md-10">
@@ -120,15 +120,11 @@ const Style2 = ({ data }) => {
                   <Link className="text-reset" to={`/blog/${item?.blog_slug}`}>
                     <div class="article-content p-4">
                       <div class="article-category mb-4 d-block">
-                        <a
-                          href="#"
-                          onClick={(e) => e.preventDefault()}
-                          class="d-inline-block text-warning badge bg-warning-soft"
-                        >
+                        <a class="d-inline-block text-warning badge bg-warning-soft">
                           {item?.category?.category_name}
                         </a>
                       </div>
-                      <a href="#" onClick={(e) => e.preventDefault()}>
+                      <a>
                         <h2 class="h5 article-title limit-2-line-text">
                           {item?.blog_title}
                         </h2>

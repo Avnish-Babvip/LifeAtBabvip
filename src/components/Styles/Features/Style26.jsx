@@ -1,94 +1,79 @@
-import React from 'react'
+import Parallax from "parallax-js";
+import React, { useEffect, useRef } from "react";
 
-const Style26 = () => {
+const Style26 = ({ data }) => {
+  const assetRoute = `${
+    import.meta.env.VITE_PRODUCTION === "true"
+      ? import.meta.env.VITE_ASSETS
+      : ""
+  }`;
+
+  const parallaxRef = useRef(null); // Reference for the parallax container
+
+  useEffect(() => {
+    if (window.AOS) {
+      window.AOS.init(); // Initialize AOS
+    }
+
+    if (parallaxRef.current) {
+      new Parallax(parallaxRef.current, {
+        relativeInput: true,
+        clipRelativeInput: true,
+      });
+    }
+  }, []);
+
   return (
     <>
-    <section class="app-two-feature ptb-120">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-md-10">
-                        <div class="section-heading text-center">
-                            <h2>Explore Premium Features</h2>
-                            <p>
-                                A bit of how's your father he nicked it charles daft plast lavator.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-12 col-xl-10">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-12">
-                                <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
-                                    <div class="app-two-single-feature-icon box-one me-3 mb-4 mb-md-0">
-                                        <i class="fas fa-file-edit"></i>
-                                    </div>
-                                    <div class="app-two-single-feature-content">
-                                        <h3 class="h5">Easy to Customized</h3>
-                                        <p>
-                                            Authoritatively productize orthogonal networks rather than
-                                            state of the art interfaces.
-                                        </p>
-                                        <a href="service-single.html" class="link-with-icon text-decoration-none">View
-                                            Details <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-12">
-                                <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
-                                    <div class="app-two-single-feature-icon box-two me-3 mb-4 mb-md-0">
-                                        <i class="fas fa-bell"></i>
-                                    </div>
-                                    <div class="app-two-single-feature-content">
-                                        <h3 class="h5">Mobile App</h3>
-                                        <p>
-                                            Enthusiastically envisioneer integrated catalysts for change
-                                            before fully researched vortals.
-                                        </p>
-                                        <a href="service-single.html" class="link-with-icon text-decoration-none">View
-                                            Details <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-12">
-                                <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
-                                    <div class="app-two-single-feature-icon box-three me-3 mb-4 mb-md-0">
-                                        <i class="fas fa-pen-nib"></i>
-                                    </div>
-                                    <div class="app-two-single-feature-content">
-                                        <h3 class="h5">Expand your reach</h3>
-                                        <p>
-                                            Authoritatively syndicate focused ideas whereas revolutionary
-                                            outsourcing.
-                                        </p>
-                                        <a href="service-single.html" class="link-with-icon text-decoration-none">View
-                                            Details <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-12">
-                                <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
-                                    <div class="app-two-single-feature-icon box-four me-3 mb-4 mb-md-0">
-                                        <i class="fas fa-cloud-download-alt"></i>
-                                    </div>
-                                    <div class="app-two-single-feature-content">
-                                        <h3 class="h5">Free Download</h3>
-                                        <p>
-                                            Rapidiously reintermediate plug-and-play potentialities via
-                                            cross-unit e-markets.
-                                        </p>
-                                        <a href="service-single.html" class="link-with-icon text-decoration-none">View
-                                            Details <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <section class="feature-section ptb-120">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-12">
+              <div
+                class="section-heading text-center aos-init aos-animate"
+                data-aos="fade-up"
+              >
+                <h4 class="text-primary h5">{data?.subtitle}</h4>
+                <h2>{data?.title}</h2>
+                <p>{data?.description} </p>
+              </div>
             </div>
-        </section>
-        </>
-  )
-}
+          </div>
+          <div class="row align-items-center">
+            {data?.step_data.map((item, idx) => (
+              <div class="col-lg-4 col-md-6">
+                <div
+                  class="position-relative aos-init aos-animate"
+                  data-aos="fade-up"
+                  data-aos-delay="50"
+                >
+                  <div class="cta-card rounded-custom text-center custom-shadow p-5 bg-white mt-4 mt-lg-0 mt-md-0 z-2">
+                    <div class=" d-inline-block  mb-40">
+                      <img
+                        src={`${import.meta.env.VITE_REACT_APP_IMAGE_PATH}/${
+                          item?.step_image
+                        }`}
+                        alt={item?.step_image_icon_alt_tag}
+                        className="img-fluid"
+                      />
+                    </div>
+                    <h3 class="h5">{item?.step_title}</h3>
+                    <p class="mb-0">{item?.step_description}</p>
+                  </div>
+                  <div class="dot-shape-bg position-absolute z--1 left--40 top--40">
+                    <img
+                      src={`${assetRoute}/assets/img/shape/dot-big-square.svg`}
+                      alt="shape"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
 
-export default Style26
+export default Style26;

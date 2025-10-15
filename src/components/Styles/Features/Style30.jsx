@@ -1,72 +1,51 @@
-import React, { useState } from 'react'
-import VideoModal from '../../VideoModal/VideoModal'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Style30 = () => {
-  const [showVideo, setShowVideo] = useState(false);
-
+const Style30 = ({ data }) => {
   return (
     <>
-    <section class="counter-with-video pt-60 pb-120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="cyber-video-img" style={{"background": `url('assets/img/video_bg.png')no-repeat center top/cover`}}>
-                            <Link  onClick={() =>
-                        "http://www.youtube.com/watch?v=hAP2QF--2Dg" &&
-                        setShowVideo(true)
-                      } class="video-icon popup-youtube popup-video-btn text-decoration-none"><i class="fas fa-play"></i>
-                            </Link>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mt-5 mt-lg-0">
-                            <div class="section-heading mb-5">
-                                <h5 class="h6 text-primary">Protect to your life</h5>
-                                <h2>
-                                    Partner With One of the Premier as Cyber security
-                                </h2>
-                                <p>
-                                    Interactively fabricate extensive partnerships whereas virtual processes. Dynamically productivate
-                                    equity invested portals before cross functional communities reconceptualize
-                                    goal-oriented core competencies.
-                                </p>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="bg-white p-4 cyber-count-box mb-30 mb-lg-0">
-                                        <h2 class="text-primary">50k+</h2>
-                                        <h5 class="h-6">Happy Clients</h5>
-                                        <p>
-                                            If you use this is regularly keephosting bandwidth bill
-                                            nostrud amet.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="bg-white p-4 cyber-count-box">
-                                        <h2 class="text-primary">7 k+</h2>
-                                        <h5 class="h-6">Success Project</h5>
-                                        <p>
-                                            If you use this si regularly keephosting bandwidth bill
-                                            nostrud amet.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <section class="crypto-promo bg-dark-black pt-120 pb-60">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="section-title text-center mb-5">
+                <h2>{data?.title}</h2>
+                <p class="px-5">{data?.description}</p>
+              </div>
             </div>
-        </section>
-        {showVideo && (
-        <VideoModal
-          videoUrl={"http://www.youtube.com/watch?v=hAP2QF--2Dg"}
-          setShowVideo={setShowVideo}
-        />
-      )}
-        </>
-  )
-}
+          </div>
+          <div class="row">
+            {data?.step_data.map((item, idx) => (
+              <div class="col-lg-4 col-md-6">
+                <div class="bg-soft-black crypto-promo-box mb-30 mb-lg-0">
+                  <div class="crypt-promo-icon">
+                    <img
+                      src={`${import.meta.env.VITE_REACT_APP_IMAGE_PATH}/${
+                        item?.step_image
+                      }`}
+                      alt={item?.step_image_icon_alt_tag}
+                      className="pb-2 img-fluid"
+                    />
+                  </div>
+                  <h4 class="fw-medium">{item?.step_title}</h4>
+                  <p>{item?.step_description}</p>
+                  {item?.link_text && (
+                    <Link
+                      to={item?.link_url}
+                      target="_blank"
+                      class="link-with-icon text-decoration-none"
+                    >
+                      {item?.link_text} <i class="fas fa-arrow-right"></i>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
 
-export default Style30
+export default Style30;

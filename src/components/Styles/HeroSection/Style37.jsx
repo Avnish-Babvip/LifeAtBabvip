@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Style37 = ({ data }) => {
   return (
-    <div class="rm-cta-area risk-bg-color-two ptb-80 position-relative z-1">
+    <div class="rm-cta-area risk-bg-color-two ptb-100 position-relative z-1">
       <div class="container">
         <div class="position-relative">
           <div class="row justify-content-center">

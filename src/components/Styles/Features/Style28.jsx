@@ -1,72 +1,48 @@
-import React, { useEffect, useRef } from "react";
-import Parallax from "parallax-js";
+import { Link } from "react-router-dom";
 
-const Style28 = () => {
-  const parallaxRef = useRef(null); // Reference for the parallax container
-
-  useEffect(() => {
-    if (window.AOS) {
-      window.AOS.init(); // Initialize AOS
-    }
-
-    if (parallaxRef.current) {
-      new Parallax(parallaxRef.current, {
-        relativeInput: true,
-        clipRelativeInput: true,
-      });
-    }
-  }, []);
+const Style28 = ({ data }) => {
   return (
     <>
-      <section class="feature-section pt-60 pb-120">
+      <section class="app-two-feature ptb-120">
         <div class="container">
-          <div class="row align-items-lg-center justify-content-between">
-            <div class="col-lg-5 order-lg-2 mb-7 mb-lg-0">
-              <div class="mb-4 " data-aos="fade-up">
-                <h2>Experience your Product with Integration</h2>
-                <p>
-                  Conveniently drive stand-alone total linkage for
-                  process-centric content enthusiastically administrate robust
-                  collaborative.{" "}
-                </p>
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+              <div class="section-heading text-center">
+                <h2>{data?.title}</h2>
+                <p>{data?.description}</p>
               </div>
-              <ul
-                class="list-unstyled d-flex flex-wrap list-two-col mt-5 "
-                data-aos="fade-up"
-                data-aos-delay="50"
-              >
-                <li>
-                  <span class="d-block mb-4">
-                    <i class="fas fa-user fa-2x text-primary"></i>
-                  </span>
-                  <h3 class="h5">Customer analysis</h3>
-                  <p>
-                    Objectively exceptional via customized capital expertise.
-                  </p>
-                </li>
-                <li>
-                  <span class="d-block mb-4">
-                    <i class="fas fa-clock fa-2x text-primary"></i>
-                  </span>
-                  <h3 class="h5">Real time metrics</h3>
-                  <p>Interactively integrate extensible users resource. </p>
-                </li>
-              </ul>
             </div>
-            <div class="col-lg-6 order-lg-1">
-              <div class="pr-lg-4">
-                <div
-                  class="bg-light-subtle text-center rounded-custom overflow-hidden p-lg-5 p-3 mx-lg-auto "
-                  data-aos="fade-up"
-                  data-aos-delay="50"
-                >
-                  <img
-                    src="assets/img/dashboard-img.png"
-                    alt=""
-                    class="img-fluid"
-                  />
-                  <div class="position-absolute bg-primary-dark z--1 dot-mask dm-size-16 dm-wh-350 top--40 left--40 top-left"></div>
-                </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-12 col-xl-10">
+              <div class="row">
+                {data?.step_data.map((item, idx) => (
+                  <div class="col-xl-6 col-lg-6 col-md-12">
+                    <div class="app-two-single-feature bg-white d-md-flex align-items-start mb-30">
+                      <div class="app-two-single-feature-icon box-one me-3 mb-4 mb-md-0">
+                        <img
+                          src={`${import.meta.env.VITE_REACT_APP_IMAGE_PATH}/${
+                            item?.step_image
+                          }`}
+                          alt={item?.step_image_icon_alt_tag}
+                        />
+                      </div>
+                      <div class="app-two-single-feature-content">
+                        <h3 class="h5">{item?.step_title}</h3>
+                        <p>{item?.step_description}</p>
+                        {item?.link_text && (
+                          <Link
+                            to={item?.link_url}
+                            target="_blank"
+                            class="link-with-icon text-decoration-none"
+                          >
+                            {item?.link_text} <i class="fas fa-arrow-right"></i>
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

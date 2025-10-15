@@ -1,7 +1,15 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { getTeam } from "../../../features/actions/team";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 
-const Style5 = ({ data, teamData }) => {
+const Style5 = ({ data }) => {
+  const dispatch = useDispatch();
+  const { teamData } = useSelector((state) => state.team);
+
+  useEffect(() => {
+    dispatch(getTeam());
+  }, []);
   return (
     <>
       <div class="it-company-team-area it-company-bg-two ptb-120 position-relative z-1">

@@ -10,38 +10,38 @@ import Loader from "./components/Loader/Loader";
 import { Toaster } from "sonner";
 import { getAllSiteSettings } from "./features/actions/siteSettings";
 import { storeUserEmail } from "./features/slices/authentication";
-import { checkApplicantLogin } from "./features/actions/authentication";
+// import { checkApplicantLogin } from "./features/actions/authentication";
 
 function App() {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.siteSettings);
-  const { userEmail } = useSelector((state) => state.authentication);
+  // const { userEmail } = useSelector((state) => state.authentication);
   const { siteSetting } = useSelector(
     (state) => state.siteSettings.siteSettingsData
   );
-  const query = new URLSearchParams(window.location.search);
-  const email = query.get("email");
+  // const query = new URLSearchParams(window.location.search);
+  // const email = query.get("email");
 
-  useEffect(() => {
-    if (userEmail) {
-      dispatch(checkApplicantLogin(userEmail));
-      const url = new URL(window.location.href);
-      url.searchParams.delete("email");
+  // useEffect(() => {
+  //   if (userEmail) {
+  //     dispatch(checkApplicantLogin(userEmail));
+  //     const url = new URL(window.location.href);
+  //     url.searchParams.delete("email");
 
-      window.history.replaceState(
-        {},
-        document.title,
-        url.pathname + url.search
-      );
-    }
-  }, [userEmail]);
+  //     window.history.replaceState(
+  //       {},
+  //       document.title,
+  //       url.pathname + url.search
+  //     );
+  //   }
+  // }, [userEmail]);
 
-  useEffect(() => {
-    if (email) {
-      localStorage.setItem("user_email", email);
-      dispatch(storeUserEmail(email));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (email) {
+  //     localStorage.setItem("user_email", email);
+  //     dispatch(storeUserEmail(email));
+  //   }
+  // }, []);
 
   useEffect(() => {
     dispatch(getAllHeadMenu());

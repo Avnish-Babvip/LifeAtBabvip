@@ -5,6 +5,15 @@ import DefaultLayout from "../layout/DefaultLayout/DefaultLayout";
 import Maintenance from "../pages/Maintenance";
 import DynamicRootPage from "../pages/DynamicRootPage";
 import Loader from "../components/Loader/Loader";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Login from "../pages/Authentication/Login";
+import ForgotPassword from "../pages/Authentication/ForgotPassword";
+import SignUp from "../pages/Authentication/SignUp";
+import MyProfile from "../pages/Dashboard/MyProfile";
+import ChangePassword from "../pages/Authentication/ChangePassword";
+import EmailVerification from "../pages/Authentication/EmailVerification";
+import FeedbackForm from "../pages/FeedbackForm";
+
 
 // Lazy Loading 😴
 const Blog = lazy(() => import("../pages/Blog"));
@@ -27,6 +36,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <DynamicRootPage />,
+      },
+      {
+        path: "/feedback/form",
+        element: <FeedbackForm />,
       },
       {
         path: "/:slug",
@@ -71,6 +84,34 @@ export const appRouter = createBrowserRouter([
             <Portfolio />
           </Suspense>
         ),
+      },
+      {
+        path: "/applicant/dashboard", // 👈 separate dashboard routes
+        element: <Dashboard />,
+      },
+      {
+        path: "/applicant/profile", // 👈 separate dashboard routes
+        element: <MyProfile />,
+      },
+      {
+        path: "/applicant/changePassword", // 👈 separate dashboard routes
+        element: <ChangePassword />,
+      },
+      {
+        path: "/login/applicant", // 👈 separate dashboard routes
+        element: <Login />,
+      },
+      {
+        path: "/email-verification/applicant", // 👈 separate dashboard routes
+        element: <EmailVerification />,
+      },
+      {
+        path: "/login/password-reset",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "/signup/applicant",
+        element: <SignUp />,
       },
     ],
   },

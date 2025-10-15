@@ -1,65 +1,47 @@
-import React from 'react'
+import React from "react";
 
-const Style31 = () => {
+const Style31 = ({ data }) => {
   return (
     <>
-    <section class="crypto-promo bg-dark-black pt-120 pb-60">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8">
-                        <div class="section-title text-center mb-5">
-                            <h2>Most Trusted Cryptocurrency Platform</h2>
-                            <p class="px-5">
-                                A cryptocurrency is a tradable digital asset or digital form of
-                                money, built on blockchain technology that only exists online.
-                            </p>
-                        </div>
-                    </div>
+      <section class="crypto-customer-counter bg-dark-black ptb-60">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 col-md-12">
+              <div class="crypto-customer-counter">
+                <div class="counter-content section-title mb-30">
+                  <h2 class="mb-4">{data?.title}</h2>
+                  <p>{data?.description}</p>
                 </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="bg-soft-black crypto-promo-box mb-30 mb-lg-0">
-                            <div class="crypt-promo-icon">
-                                <i class="fas fa-wifi"></i>
-                            </div>
-                            <h4 class="fw-medium">Best Trading Platform</h4>
-                            <p>
-                                Cryptocurrency does not exist in physical form like paper money
-                                and is typically not issued by a central authority.
-                            </p>
-                            <a href="service-single.html" class="link-with-icon text-decoration-none">Explore More <i class="fas fa-arrow-right"></i></a>
+                <div class="counter-box mb-5 mb-lg-0">
+                  <div class="row">
+                    {data?.step_data.map((item, idx) => (
+                      <div class="col-lg-4 col-md-4">
+                        <div class="single-counter-box bg-soft-black mb-3 mb-md-0">
+                          <h5 class="h4">{item?.step_title}</h5>
+                          <span>{item?.step_subtitle}</span>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="bg-soft-black crypto-promo-box mb-30 mb-lg-0">
-                            <div class="crypt-promo-icon">
-                                <i class="fas fa-tags"></i>
-                            </div>
-                            <h4 class="fw-medium">Transparent Pricing</h4>
-                            <p>
-                                Cryptocurrency does not exist in physical form like paper money
-                                and is typically not issued by a central authority.
-                            </p>
-                            <a href="service-single.html" class="link-with-icon text-decoration-none">Explore More <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="bg-soft-black crypto-promo-box">
-                            <div class="crypt-promo-icon">
-                                <i class="fas fa-shield"></i>
-                            </div>
-                            <h4 class="fw-medium">Trusted Security</h4>
-                            <p>
-                                Cryptocurrency does not exist in physical form like paper money
-                                and is typically not issued by a central authority.
-                            </p>
-                            <a href="service-single.html" class="link-with-icon text-decoration-none">Explore More <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+              </div>
             </div>
-        </section></>
-  )
-}
+            <div class="col-lg-6 col-md-12">
+              <div class="maps-img text-lg-center">
+                <img
+                  src={`${import.meta.env.VITE_REACT_APP_IMAGE_PATH}/${
+                    data?.image
+                  }`}
+                  alt={data?.image_alt_tag}
+                  class="img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
 
-export default Style31
+export default Style31;

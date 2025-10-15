@@ -1,24 +1,25 @@
 import { configureStore } from "@reduxjs/toolkit";
-import {combineReducers} from "redux";
+import { combineReducers } from "redux";
 import { encryptTransform } from "redux-persist-transform-encrypt";
-import {persistReducer} from "redux-persist";
+import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import headMenu from "./slices/headMenu";
 import footerMenu from "./slices/footerMenu";
 import siteSettings from "./slices/siteSettings";
 import blog from "./slices/blog";
 import helpCenter from "./slices/helpCenter";
-import team from "./slices/team"
-import submission from "./slices/submission"
-import dynamicRootPage from "./slices/dynamicRootPage"
-import portfolio from "./slices/portfolio"
-import home from "./slices/home"
-import career from "./slices/career"
-import department from "./slices/department"
-import authentication from "./slices/authentication"
+import team from "./slices/team";
+import submission from "./slices/submission";
+import dynamicRootPage from "./slices/dynamicRootPage";
+import portfolio from "./slices/portfolio";
+import home from "./slices/home";
+import career from "./slices/career";
+import department from "./slices/department";
+import authentication from "./slices/authentication";
+import privacy from "./slices/privacy";
 
 const rootReducer = combineReducers({
-  headMenu ,
+  headMenu,
   footerMenu,
   siteSettings,
   dynamicRootPage,
@@ -32,11 +33,11 @@ const rootReducer = combineReducers({
   career,
   department,
   authentication,
-  });
+  privacy,
+});
 
-  
- // Redux-persist configuration
- const persistConfig = {
+// Redux-persist configuration
+const persistConfig = {
   key: "LifeAtBabvip",
   version: 1,
   storage,
@@ -55,12 +56,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 // Configure and create the Redux store
 const store = configureStore({
-    reducer: persistedReducer,
-    devTools: true,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: false,
-      }),
-  });
+  reducer: persistedReducer,
+  devTools: true,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+});
 
-  export default store;
+export default store;

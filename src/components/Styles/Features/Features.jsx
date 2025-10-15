@@ -24,6 +24,21 @@ import Style22 from "./Style22";
 import Style23 from "./Style23";
 import Style24 from "./Style24";
 import Style25 from "./Style25";
+import Style26 from "./Style26";
+import Style27 from "./Style27";
+import Style28 from "./Style28";
+import Style29 from "./Style29";
+import Style30 from "./Style30";
+import Style31 from "./Style31";
+import Style32 from "./Style32";
+import Style33 from "./Style33";
+import Style34 from "./Style34";
+import Style35 from "./Style35";
+import Style36 from "./Style36";
+import Style37 from "./Style37";
+import Style38 from "./Style38";
+import Style39 from "./Style39";
+import Style40 from "./Style40";
 
 const Features = ({ data, styleName }) => {
   const componentMap = {
@@ -52,6 +67,21 @@ const Features = ({ data, styleName }) => {
     "Style 23": Style23,
     "Style 24": Style24,
     "Style 25": Style25,
+    "Style 26": Style26,
+    "Style 27": Style27,
+    "Style 28": Style28,
+    "Style 29": Style29,
+    "Style 30": Style30,
+    "Style 31": Style31,
+    "Style 32": Style32,
+    "Style 33": Style33,
+    "Style 34": Style34,
+    "Style 35": Style35,
+    "Style 36": Style36,
+    "Style 37": Style37,
+    "Style 38": Style38,
+    "Style 39": Style39,
+    "Style 40": Style40,
   };
 
   const Component = componentMap[styleName];
